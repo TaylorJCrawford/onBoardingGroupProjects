@@ -2,6 +2,7 @@ CREATE TABLE projects (
 	projectID INT AUTO_INCREMENT PRIMARY KEY,
     projectName VARCHAR(50) NOT NULL,
     projectValue DECIMAL(15,2) UNSIGNED NOT NULL,
+    projectCreated DATE NOT NULL,
     clientID INT NOT NULL,
     techLeadID INT NULL,
     FOREIGN KEY(clientID) REFERENCES clients(clientID),
@@ -14,11 +15,11 @@ DELIMITER $$
 			BEGIN
 				START TRANSACTION;
             
-					INSERT INTO projects (projectName, projectValue, clientID, techLeadID) 
+					INSERT INTO projects (projectName, projectValue, projectCreated, clientID, techLeadID) 
 						VALUES
-                        ("Shell POS System", 1000000.00, 1, 1),
-                        ("BP ME Loyalty System", 50000.00, 2, 2),
-                        ("Shell Self Drive", 50000.00, 1, 3);
+                        ("Shell POS System", 1000000.00, CURDATE(), 1, 1),
+                        ("BP ME Loyalty System", 50000.00, CURDATE(), 2, 2),
+                        ("Shell Self Drive", 50000.00, CURDATE(), 1, 3);
                     GET DIAGNOSTICS @rows = ROW_COUNT;
 						IF @rows != 3 THEN
 							ROLLBACK;

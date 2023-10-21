@@ -5,6 +5,7 @@ CREATE TABLE projects (
     projectCreated DATE NOT NULL,
     clientID INT NOT NULL,
     techLeadID INT NULL,
+    completedDate Date NULL,
     FOREIGN KEY(clientID) REFERENCES clients(clientID),
     FOREIGN KEY(techLeadID) REFERENCES deliveryEmployees(employeeID)
 );
@@ -15,11 +16,11 @@ DELIMITER $$
 			BEGIN
 				START TRANSACTION;
             
-					INSERT INTO projects (projectName, projectValue, projectCreated, clientID, techLeadID) 
+					INSERT INTO projects (projectName, projectValue, projectCreated, clientID, techLeadID, completedDate) 
 						VALUES
-                        ("Shell POS System", 1000000.00, CURDATE(), 1, 1),
-                        ("BP ME Loyalty System", 50000.00, CURDATE(), 2, 2),
-                        ("Shell Self Drive", 50000.00, CURDATE(), 1, 3);
+                        ("Shell POS System", 1000000.00, CURDATE(), 1, 1, NULL),
+                        ("BP ME Loyalty System", 50000.00, CURDATE(), 2, 2, NULL),
+                        ("Shell Self Drive", 50000.00, CURDATE(), 1, 3, NULL);
                     GET DIAGNOSTICS @rows = ROW_COUNT;
 						IF @rows != 3 THEN
 							ROLLBACK;

@@ -41,7 +41,7 @@ CREATE TABLE deliveryEmployeesProject (
     endDate DATE NULL,
     FOREIGN KEY(employeeID) REFERENCES deliveryEmployees(employeeID),
     FOREIGN KEY(projectID) REFERENCES projects(projectID),
-    PRIMARY  KEY(employeeID, projectID)
+    PRIMARY  KEY(employeeID, projectID, startDate)
 );
 
 DROP PROCEDURE IF EXISTS insertFakeDeliveryEmployeeProjectData;

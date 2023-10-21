@@ -1,5 +1,5 @@
--- As a member of the Management team I want to be able to see a list of delivery employees 
--- who are not assigned to a project who have previously worked with a technology that 
+-- As a member of the Management team I want to be able to see a list of delivery employees
+-- who are not assigned to a project who have previously worked with a technology that
 -- is currently being used on a project and the name of those projects.
 
 DROP PROCEDURE IF EXISTS deliveryEmployeesNotAssignedToAProject;

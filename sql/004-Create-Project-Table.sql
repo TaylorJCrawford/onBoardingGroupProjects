@@ -12,24 +12,24 @@ CREATE TABLE projects (
 
 DROP PROCEDURE IF EXISTS insertFakeProjectData;
 DELIMITER $$
-		CREATE PROCEDURE insertFakeProjectData()
-			BEGIN
-				START TRANSACTION;
-            
-					INSERT INTO projects (projectName, projectValue, projectCreated, clientID, techLeadID, completedDate) 
-						VALUES
-                        ("Shell POS System", 1000000.00, CURDATE(), 1, 1, NULL),
-                        ("BP ME Loyalty System", 50000.00, CURDATE(), 2, 2, NULL),
-                        ("Shell Self Drive", 50000.00, CURDATE(), 1, 3, NULL);
-                    GET DIAGNOSTICS @rows = ROW_COUNT;
-						IF @rows != 3 THEN
-							ROLLBACK;
-							SELECT 'Transaction (insertFakeProjectData) rolled back due to error: ' + @rows;
-						ELSE
-							COMMIT;
-							SELECT 'Transaction (insertFakeProjectData) committed successfully';
-					END IF;
-			END $$
+	CREATE PROCEDURE insertFakeProjectData()
+		BEGIN
+			START TRANSACTION;
+
+				INSERT INTO projects (projectName, projectValue, projectCreated, clientID, techLeadID, completedDate)
+					VALUES
+                    ("Shell POS System", 1000000.00, CURDATE(), 1, 1, NULL),
+                    ("BP ME Loyalty System", 50000.00, CURDATE(), 2, 2, NULL),
+                    ("Shell Self Drive", 50000.00, CURDATE(), 1, 3, NULL);
+                GET DIAGNOSTICS @rows = ROW_COUNT;
+					IF @rows != 3 THEN
+						ROLLBACK;
+						SELECT 'Transaction (insertFakeProjectData) rolled back due to error: ' + @rows;
+					ELSE
+						COMMIT;
+						SELECT 'Transaction (insertFakeProjectData) committed successfully';
+				END IF;
+		END $$
 DELIMITER ;
 
 CALL insertFakeProjectData();
@@ -48,22 +48,22 @@ CREATE TABLE deliveryEmployeesProject (
 
 DROP PROCEDURE IF EXISTS insertFakeDeliveryEmployeeProjectData;
 DELIMITER $$
-		CREATE PROCEDURE insertFakeDeliveryEmployeeProjectData()
-			BEGIN
-				START TRANSACTION;
-            
-					INSERT INTO deliveryEmployeesProject (employeeID, projectID, startDate, endDate) 
-						VALUES
-                        (1, 1, "2020-10-13", NULL),
-                        (1, 2, "2022-12-10", "2023-01-15");
-                    GET DIAGNOSTICS @rows = ROW_COUNT;
-						IF @rows != 2 THEN
-							ROLLBACK;
-							SELECT 'Transaction (insertFakeDeliveryEmployeeProjectData) rolled back due to error: ' + @rows;
-						ELSE
-							COMMIT;
-							SELECT 'Transaction (insertFakeDeliveryEmployeeProjectData) committed successfully';
-					END IF;
-			END $$
+	CREATE PROCEDURE insertFakeDeliveryEmployeeProjectData()
+		BEGIN
+			START TRANSACTION;
+
+				INSERT INTO deliveryEmployeesProject (employeeID, projectID, startDate, endDate)
+					VALUES
+                    (1, 1, "2020-10-13", NULL),
+                    (1, 2, "2022-12-10", "2023-01-15");
+                GET DIAGNOSTICS @rows = ROW_COUNT;
+					IF @rows != 2 THEN
+						ROLLBACK;
+						SELECT 'Transaction (insertFakeDeliveryEmployeeProjectData) rolled back due to error: ' + @rows;
+					ELSE
+						COMMIT;
+						SELECT 'Transaction (insertFakeDeliveryEmployeeProjectData) committed successfully';
+				END IF;
+		END $$
 DELIMITER ;
 CALL insertFakeDeliveryEmployeeProjectData();

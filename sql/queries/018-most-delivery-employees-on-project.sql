@@ -1,4 +1,4 @@
--- As a member of the Management team I want to be able to see the project with the 
+-- As a member of the Management team I want to be able to see the project with the
 	-- most delivery employees currently working on it
 
 SELECT P.projectName, COUNT(DEP.employeeID) AS `Count` FROM projects P

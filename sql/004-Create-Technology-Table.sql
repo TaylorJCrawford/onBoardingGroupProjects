@@ -5,24 +5,24 @@ CREATE TABLE technology (
 
 DROP PROCEDURE IF EXISTS insertFakeTechData;
 DELIMITER $$
-		CREATE PROCEDURE insertFakeTechData()
-			BEGIN
-				START TRANSACTION;
-            
-					INSERT INTO technology (techName) 
-						VALUES
-                        ("MySQL Database"),
-                        ("Artificial intelligence"),
-                        ("Node JS");
-                    GET DIAGNOSTICS @rows = ROW_COUNT;
-						IF @rows != 3 THEN
-							ROLLBACK;
-							SELECT 'Transaction (insertFakeTechData) rolled back due to error: ' + @rows;
-						ELSE
-							COMMIT;
-							SELECT 'Transaction (insertFakeTechData) committed successfully';
-					END IF;
-			END $$
+	CREATE PROCEDURE insertFakeTechData()
+		BEGIN
+			START TRANSACTION;
+
+				INSERT INTO technology (techName)
+					VALUES
+                    ("MySQL Database"),
+                    ("Artificial intelligence"),
+                    ("Node JS");
+                GET DIAGNOSTICS @rows = ROW_COUNT;
+					IF @rows != 3 THEN
+						ROLLBACK;
+						SELECT 'Transaction (insertFakeTechData) rolled back due to error: ' + @rows;
+					ELSE
+						COMMIT;
+						SELECT 'Transaction (insertFakeTechData) committed successfully';
+				END IF;
+		END $$
 DELIMITER ;
 
 CALL insertFakeTechData();
@@ -38,22 +38,22 @@ CREATE TABLE technologyProject (
 
 DROP PROCEDURE IF EXISTS insertFakeTechProjectData;
 DELIMITER $$
-		CREATE PROCEDURE insertFakeTechProjectData()
-			BEGIN
-				START TRANSACTION;
-            
-					INSERT INTO technologyProject (projectID, techID) 
-						VALUES
-                        (1, 1), (1, 3), (2, 2);
-                    GET DIAGNOSTICS @rows = ROW_COUNT;
-						IF @rows != 3 THEN
-							ROLLBACK;
-							SELECT 'Transaction (insertFakeTechProjectData) rolled back due to error: ' + @rows;
-						ELSE
-							COMMIT;
-							SELECT 'Transaction (insertFakeTechProjectData) committed successfully';
-					END IF;
-			END $$
+	CREATE PROCEDURE insertFakeTechProjectData()
+		BEGIN
+			START TRANSACTION;
+
+				INSERT INTO technologyProject (projectID, techID)
+					VALUES
+                    (1, 1), (1, 3), (2, 2);
+                GET DIAGNOSTICS @rows = ROW_COUNT;
+					IF @rows != 3 THEN
+						ROLLBACK;
+						SELECT 'Transaction (insertFakeTechProjectData) rolled back due to error: ' + @rows;
+					ELSE
+						COMMIT;
+						SELECT 'Transaction (insertFakeTechProjectData) committed successfully';
+				END IF;
+		END $$
 DELIMITER ;
 
 CALL insertFakeTechProjectData();
@@ -70,22 +70,22 @@ CREATE TABLE deliveryEmployeeTechnology (
 
 DROP PROCEDURE IF EXISTS insertFakeDeliveryEmployeeTechnolgoyData;
 DELIMITER $$
-		CREATE PROCEDURE insertFakeDeliveryEmployeeTechnolgoyData()
-			BEGIN
-				START TRANSACTION;
-            
-					INSERT INTO deliveryEmployeeTechnology (employeeID, techID) 
-						VALUES
-                        (1, 1), (1, 3), (2, 2);
-                    GET DIAGNOSTICS @rows = ROW_COUNT;
-						IF @rows != 3 THEN
-							ROLLBACK;
-							SELECT 'Transaction (insertFakeDeliveryEmployeeTechnolgoyData) rolled back due to error: ' + @rows;
-						ELSE
-							COMMIT;
-							SELECT 'Transaction (insertFakeDeliveryEmployeeTechnolgoyData) committed successfully';
-					END IF;
-			END $$
+	CREATE PROCEDURE insertFakeDeliveryEmployeeTechnolgoyData()
+		BEGIN
+			START TRANSACTION;
+
+				INSERT INTO deliveryEmployeeTechnology (employeeID, techID)
+					VALUES
+                    (1, 1), (1, 3), (2, 2);
+                GET DIAGNOSTICS @rows = ROW_COUNT;
+					IF @rows != 3 THEN
+						ROLLBACK;
+						SELECT 'Transaction (insertFakeDeliveryEmployeeTechnolgoyData) rolled back due to error: ' + @rows;
+					ELSE
+						COMMIT;
+						SELECT 'Transaction (insertFakeDeliveryEmployeeTechnolgoyData) committed successfully';
+				END IF;
+		END $$
 DELIMITER ;
 
 CALL insertFakeDeliveryEmployeeTechnolgoyData();
